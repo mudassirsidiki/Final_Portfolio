@@ -117,6 +117,20 @@ const PIXEL_MAP = {
     [1, 0, 0, 0],
     [1, 1, 1, 1],
   ],
+  W: [
+    [1, 0, 0, 0, 1],
+    [1, 0, 0, 0, 1],
+    [1, 0, 1, 0, 1],
+    [1, 1, 0, 1, 1],
+    [1, 0, 0, 0, 1],
+  ],
+  B: [
+    [1, 1, 1, 0],
+    [1, 0, 0, 1],
+    [1, 1, 1, 0],
+    [1, 0, 0, 1],
+    [1, 1, 1, 0],
+  ],
 }
 
 interface Pixel {
@@ -175,7 +189,7 @@ export default function GameFeature() {
       const BALL_SPEED = 6 * scale
 
       pixelsRef.current = []
-      const words = ["PORTFOLIO", "DEVELOPER"]
+      const words = ["PORTFOLIO", "WEBSITE"]
 
       const calculateWordWidth = (word: string, pixelSize: number) => {
         return (

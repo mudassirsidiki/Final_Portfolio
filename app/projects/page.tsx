@@ -12,8 +12,11 @@ export default function ProjectsPage({
 }: { 
   searchParams: { category?: string } 
 }) {
-  // Get category from URL query parameter
-  const category = searchParams.category || null;
+  // Get category from URL query parameter and validate it
+  const category = searchParams.category && 
+    (searchParams.category === "data-analyst" || searchParams.category === "web-development")
+    ? searchParams.category 
+    : null;
   
   return (
     <main className="container mx-auto px-4 py-16">

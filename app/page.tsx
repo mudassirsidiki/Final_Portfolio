@@ -20,7 +20,7 @@ export default function Home() {
             <p className="text-muted-foreground">Play with this retro-inspired game</p>
           </div>
           <div className="h-[500px] w-full rounded-xl overflow-hidden border border-primary/20 shadow-lg">
-            {/* <GameFeature /> */}
+            <GameFeature />
           </div>
         </section>
 

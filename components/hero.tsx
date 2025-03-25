@@ -19,7 +19,6 @@ export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
   const roles = [
     "I am a Full Stack Developer",
-    "I am a Data Engineer",
     "I am a Data Analyst",
   ];
 
@@ -79,7 +78,7 @@ export default function Hero() {
   // Role rotation effect
   useEffect(() => {
     const roleInterval = setInterval(() => {
-      setRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
+      setRoleIndex((prevIndex: number) => (prevIndex + 1) % roles.length);
     }, 3000);
 
     return () => clearInterval(roleInterval);
@@ -103,13 +102,13 @@ export default function Hero() {
       {/* ============= BACKGROUND LAYERS ============= */}
 
       {/* Galaxy background - The main animated galaxy */}
-      {/* <div className="fixed inset-0 -z-10 overflow-hidden">
+      <div className="fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="w-full md:w-2/3 lg:w-1/2 aspect-square">
             <Galaxy />
           </div>
         </div>
-      </div> */}
+      </div>
       
 
       <div className="w-full relative z-10">
