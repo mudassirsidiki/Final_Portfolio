@@ -1,20 +1,10 @@
 import { Suspense } from "react"
-import dynamic from "next/dynamic"
 import Hero from "@/components/hero"
 import Projects from "@/components/projects"
 import Skills from "@/components/skills"
 import Contact from "@/components/contact"
 // import FloatingShapes from "@/components/floating-shapes"
-
-// Dynamically import components that use canvas/WebGL
-const GameFeature = dynamic(() => import("@/components/game-feature"), {
-  ssr: false,
-  loading: () => (
-    <div className="h-full w-full flex items-center justify-center bg-gradient-to-b from-slate-900 to-slate-800">
-      <div className="text-purple-300/70 animate-pulse">Loading interactive experience...</div>
-    </div>
-  )
-})
+import ClientGameFeature from "@/components/ClientGameFeature"
 
 export default function Home() {
   return (
@@ -31,7 +21,7 @@ export default function Home() {
             <p className="text-muted-foreground">Play with this retro-inspired game</p>
           </div>
           <div className="h-[500px] w-full rounded-xl overflow-hidden border border-primary/20 shadow-lg">
-            <GameFeature />
+            <ClientGameFeature />
           </div>
         </section>
         

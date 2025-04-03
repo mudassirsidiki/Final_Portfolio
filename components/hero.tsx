@@ -4,194 +4,468 @@ import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
-import Image from "next/image"
 import Link from "next/link"
-import Galaxy from "@/components/GALAXY"
+import SplineModel from "./SplineModel"
 
 export default function Hero() {
   // ============= STATE MANAGEMENT =============
 
   // State for the primary name typewriter effect
-  const [nameText, setNameText] = useState("");
-  const fullNameText = "I am Mudassir Siddiqui";
+  const [nameText, setNameText] = useState("")
+  const fullNameText = "I am Mudassir Siddiqui"
 
   // State for rotating roles
-  const [roleIndex, setRoleIndex] = useState(0);
-  const roles = [
-    "I am a Full Stack Developer",
-    "I am a Data Analyst",
-  ];
+  const [roleIndex, setRoleIndex] = useState(0)
+  const roles = ["I am a Full Stack Developer", "I am a Data Analyst"]
 
   // Refs and scroll state for parallax effects
-  const containerRef = useRef(null);
-  const [scrollY, setScrollY] = useState(0);
+  const containerRef = useRef(null)
+  const [scrollY, setScrollY] = useState(0)
 
   // ============= EFFECTS =============
 
   // Name typewriter effect
   useEffect(() => {
-    let i = 0;
-    let isDeleting = false;
-    let isPaused = false;
-    const pauseDuration = 1500;
+    let i = 0
+    let isDeleting = false
+    let isPaused = false
+    const pauseDuration = 1500
 
     const typingInterval = setInterval(
       () => {
         if (isPaused) {
-          isPaused = false;
-          isDeleting = !isDeleting;
-          return;
+          isPaused = false
+          isDeleting = !isDeleting
+          return
         }
 
         if (!isDeleting) {
           // Typing forward
           if (i < fullNameText.length) {
-            setNameText(fullNameText.substring(0, i + 1));
-            i++;
+            setNameText(fullNameText.substring(0, i + 1))
+            i++
           } else {
             // Reached the end of text, pause before deleting
-            isPaused = true;
+            isPaused = true
             setTimeout(() => {
-              isDeleting = true;
-            }, pauseDuration);
+              isDeleting = true
+            }, pauseDuration)
           }
         } else {
           // Deleting backwards
           if (i > 0) {
-            setNameText(fullNameText.substring(0, i - 1));
-            i--;
+            setNameText(fullNameText.substring(0, i - 1))
+            i--
           } else {
             // Finished deleting, pause before typing again
-            isPaused = true;
+            isPaused = true
             setTimeout(() => {
-              isDeleting = false;
-            }, pauseDuration);
+              isDeleting = false
+            }, pauseDuration)
           }
         }
       },
-      isDeleting ? 30 : 50
-    );
+      isDeleting ? 30 : 50,
+    )
 
-    return () => clearInterval(typingInterval);
-  }, []);
+    return () => clearInterval(typingInterval)
+  }, [])
 
   // Role rotation effect
   useEffect(() => {
     const roleInterval = setInterval(() => {
-      setRoleIndex((prevIndex: number) => (prevIndex + 1) % roles.length);
-    }, 3000);
+      setRoleIndex((prevIndex) => (prevIndex + 1) % roles.length)
+    }, 3000)
 
-    return () => clearInterval(roleInterval);
-  }, []);
+    return () => clearInterval(roleInterval)
+  }, [])
+
+  // Set black background for the entire website
+  useEffect(() => {
+    // Apply black background to the document body and html
+    document.documentElement.style.backgroundColor = "#000000"
+    document.body.style.backgroundColor = "#000000"
+
+    // Optional: Make sure text color contrasts with black background
+    document.body.style.color = "#ffffff"
+
+    return () => {
+      // Cleanup if component unmounts (though unlikely for a hero section)
+      document.documentElement.style.backgroundColor = ""
+      document.body.style.backgroundColor = ""
+      document.body.style.color = ""
+    }
+  }, [])
 
   // Parallax scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
+      setScrollY(window.scrollY)
+    }
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
+  // Replace the entire section component with this updated version
   return (
-    <section
-      className="relative min-h-[90vh] flex items-start pt-16 md:pt-24 overflow-hidden"
-      ref={containerRef}
-    >
-      {/* ============= BACKGROUND LAYERS ============= */}
+    <section className="relative min-h-screen w-screen overflow-hidden bg-black" ref={containerRef}>
+      {/* Animated background particles */}
+      <div className="absolute inset-0 z-0 opacity-30">{/* <AnimatedParticles /> */}</div>
 
-      {/* Galaxy background - The main animated galaxy */}
-      <div className="fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-full md:w-2/3 lg:w-1/2 aspect-square">
-            <Galaxy />
-          </div>
-        </div>
+      {/* Floating tech badges */}
+      <div className="absolute inset-0 z-0">{/* <FloatingTechBadges /> */}</div>
+
+      {/* Robot model */}
+      <div
+        className="absolute inset-0 w-full h-full z-0"
+        style={{
+          transform: "scale(0.8) translateY(-12%)",
+          transformOrigin: "center center",
+        }}
+      >
+        <SplineModel />
       </div>
-      
 
-      <div className="w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="flex flex-col space-y-4"
-          >
-            {/* ============= TEXT HEADINGS ============= */}
-            <div className="space-y-3">
+      {/* Decorative gradient circles */}
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/20 rounded-full filter blur-3xl opacity-30 -mr-24 -mb-24"></div>
+      <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-blue-500/20 rounded-full filter blur-3xl opacity-20"></div>
+
+      {/* Content positioned on the far left side */}
+      <div className="absolute inset-0 z-10">
+        <div className="container mx-auto px-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Left side content */}
+            <div className="pl-2 md:pl-2 lg:pl-1">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.8 }}
-                className="space-y-1"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                className="flex flex-col space-y-4 max-w-xl"
               >
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white">
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradient-x">
-                    Hello, world.
-                  </span>
-                </h1>
+                {/* ============= TEXT HEADINGS ============= */}
+                <div className="space-y-3 mt-8">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5, duration: 0.8 }}
+                    className="space-y-1"
+                  >
+                    <h1 className="text-5xl sm:text-6xl lg:text-5xl font-bold tracking-tight text-white text-left">
+                      <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradient-x">
+                        Hello, world.
+                      </span>
+                    </h1>
 
-                <div className="h-14 sm:h-16 flex items-center text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white">
-                  <span>{nameText}</span>
-                  <span className="animate-blink ml-1 h-12 w-[3px] bg-blue-400 inline-block"></span>
+                    <div className="h-14 sm:h-16 flex items-start justify-start text-4xl sm:text-5xl lg:text-5xl font-bold tracking-tight text-white">
+                      <span>{nameText}</span>
+                      <span className="animate-blink ml-1 h-12 w-[3px] bg-blue-400 inline-block"></span>
+                    </div>
+
+                    <div className="h-10 sm:h-12 flex items-start justify-start text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tight text-white">
+                      <AnimatePresence mode="wait">
+                        <motion.span
+                          key={`role-${roleIndex}`}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.5 }}
+                          className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-purple-400"
+                        >
+                          {roles[roleIndex]}
+                        </motion.span>
+                      </AnimatePresence>
+                    </div>
+                  </motion.div>
                 </div>
 
-                <div className="h-10 sm:h-12 flex items-center text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tight text-white">
-                  <AnimatePresence mode="wait">
-                    <motion.span
-                      key={`role-${roleIndex}`}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.5 }}
-                      className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-purple-400"
-                    >
-                      {roles[roleIndex]}
-                    </motion.span>
-                  </AnimatePresence>
+                <div className="flex flex-wrap gap-4 pt-2 justify-start">
+                  <Button size="lg" asChild>
+                    <Link href="#projects">
+                      View My Work <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                  <Button size="lg" variant="outline" asChild>
+                    <Link href="/contact">Get In Touch</Link>
+                  </Button>
                 </div>
               </motion.div>
             </div>
 
-            <p className="text-lg text-muted-foreground">
-            Innovative Web Developer & Data Analyst with a strong passion for building modern, user-friendly web applications and data-driven solutions. Proficient in React.js, Next.js, Tailwind CSS, Express.js, and MongoDB for full-stack development, along with expertise in Power BI, SQL, and Python for analytics and business intelligence. <br />
-            With a keen eye for design and functionality, I specialize in crafting seamless digital experiences, implementing dynamic UI/UX components, and optimizing backend performance. My data analytics expertise allows me to extract valuable insights, create interactive dashboards, and develop data-driven strategies that enhance decision-making.
-            </p>
-
-            <div className="flex flex-wrap gap-4 pt-2">
-              <Button size="lg" asChild>
-                <Link href="#projects">
-                  View My Work <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" asChild>
-                <Link href="/contact">Get In Touch</Link>
-              </Button>
+            {/* Right side - Tech stack section */}
+            <div className="hidden md:flex md:items-center md:justify-center">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.2, duration: 0.8 }}
+                className="relative z-10 mt-20 mr-8"
+              >
+                {/* <TechStack /> */}
+              </motion.div>
             </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex justify-center lg:justify-end"
-          >
-            {/* <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/30 shadow-xl">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent z-10 rounded-full" />
-              <Image
-                src="/placeholder.svg?height=400&width=400"
-                alt="Mudassir Ahmed Siddiqui"
-                width={400}
-                height={400}
-                className="object-cover"
-                priority
-              />
-            </div> */}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
   )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// HERO.TSX OLD CODE
+
+// "use client"
+
+// import { useState, useEffect, useRef } from "react"
+// import { motion, AnimatePresence } from "framer-motion"
+// import { Button } from "@/components/ui/button"
+// import { ArrowRight } from "lucide-react"
+// import Image from "next/image"
+// import Link from "next/link"
+// import Galaxy from "@/components/GALAXY"
+// import SplineModel from "./SplineModel"
+
+// export default function Hero() {
+//   // ============= STATE MANAGEMENT =============
+
+//   // State for the primary name typewriter effect
+//   const [nameText, setNameText] = useState("");
+//   const fullNameText = "I am Mudassir Siddiqui";
+
+//   // State for rotating roles
+//   const [roleIndex, setRoleIndex] = useState(0);
+//   const roles = [
+//     "I am a Full Stack Developer",
+//     "I am a Data Analyst",
+//   ];
+
+//   // Refs and scroll state for parallax effects
+//   const containerRef = useRef(null);
+//   const [scrollY, setScrollY] = useState(0);
+
+//   // ============= EFFECTS =============
+
+//   // Name typewriter effect
+//   useEffect(() => {
+//     let i = 0;
+//     let isDeleting = false;
+//     let isPaused = false;
+//     const pauseDuration = 1500;
+
+//     const typingInterval = setInterval(
+//       () => {
+//         if (isPaused) {
+//           isPaused = false;
+//           isDeleting = !isDeleting;
+//           return;
+//         }
+
+//         if (!isDeleting) {
+//           // Typing forward
+//           if (i < fullNameText.length) {
+//             setNameText(fullNameText.substring(0, i + 1));
+//             i++;
+//           } else {
+//             // Reached the end of text, pause before deleting
+//             isPaused = true;
+//             setTimeout(() => {
+//               isDeleting = true;
+//             }, pauseDuration);
+//           }
+//         } else {
+//           // Deleting backwards
+//           if (i > 0) {
+//             setNameText(fullNameText.substring(0, i - 1));
+//             i--;
+//           } else {
+//             // Finished deleting, pause before typing again
+//             isPaused = true;
+//             setTimeout(() => {
+//               isDeleting = false;
+//             }, pauseDuration);
+//           }
+//         }
+//       },
+//       isDeleting ? 30 : 50
+//     );
+
+//     return () => clearInterval(typingInterval);
+//   }, []);
+
+//   // Role rotation effect
+//   useEffect(() => {
+//     const roleInterval = setInterval(() => {
+//       setRoleIndex((prevIndex: number) => (prevIndex + 1) % roles.length);
+//     }, 3000);
+
+//     return () => clearInterval(roleInterval);
+//   }, []);
+
+//   // Parallax scroll effect
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       setScrollY(window.scrollY);
+//     };
+
+//     window.addEventListener("scroll", handleScroll);
+//     return () => window.removeEventListener("scroll", handleScroll);
+//   }, []);
+
+//   return (
+//     <section
+//       className="relative min-h-[90vh] flex items-start pt-16 md:pt-24 overflow-hidden"
+//       ref={containerRef}
+//     >
+//       {/* ============= BACKGROUND LAYERS ============= */}
+
+//       {/* Galaxy background - The main animated galaxy */}
+//       {/* <div className="fixed inset-0 -z-10 overflow-hidden">
+//         <div className="absolute inset-0 flex items-center justify-center">
+//           <div className="w-full md:w-2/3 lg:w-1/2 aspect-square">
+//             <Galaxy />
+//           </div>
+//         </div>
+//       </div> */}
+
+//       <motion.div
+//   initial={{ opacity: 0, scale: 0.9 }}
+//   animate={{ opacity: 1, scale: 1 }}
+//   transition={{ duration: 0.8, delay: 0.2 }}
+//   className="flex justify-center lg:justify-end"
+// >
+//   {/* <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/30 shadow-xl">
+//     <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent z-10 rounded-full" />
+//     <Image
+//       src="/placeholder.svg?height=400&width=400"
+//       alt="Mudassir Ahmed Siddiqui"
+//       width={400}
+//       height={400}
+//       className="object-cover"
+//       priority
+//     />
+//   </div> */}
+  
+//   <div className="relative w-80 h-80 md:w-96 md:h-96">
+//     <SplineModel />
+//   </div>
+// </motion.div>
+      
+
+//       <div className="w-full relative z-10">
+//         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+//           <motion.div
+//             initial={{ opacity: 0, y: 20 }}
+//             animate={{ opacity: 1, y: 0 }}
+//             transition={{ duration: 0.8 }}
+//             className="flex flex-col space-y-4"
+//           >
+//             {/* ============= TEXT HEADINGS ============= */}
+//             <div className="space-y-3">
+//               <motion.div
+//                 initial={{ opacity: 0, y: 20 }}
+//                 animate={{ opacity: 1, y: 0 }}
+//                 transition={{ delay: 0.5, duration: 0.8 }}
+//                 className="space-y-1"
+//               >
+//                 <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white">
+//                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradient-x">
+//                     Hello, world.
+//                   </span>
+//                 </h1>
+
+//                 <div className="h-14 sm:h-16 flex items-center text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white">
+//                   <span>{nameText}</span>
+//                   <span className="animate-blink ml-1 h-12 w-[3px] bg-blue-400 inline-block"></span>
+//                 </div>
+
+//                 <div className="h-10 sm:h-12 flex items-center text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tight text-white">
+//                   <AnimatePresence mode="wait">
+//                     <motion.span
+//                       key={`role-${roleIndex}`}
+//                       initial={{ opacity: 0, y: 10 }}
+//                       animate={{ opacity: 1, y: 0 }}
+//                       exit={{ opacity: 0, y: -10 }}
+//                       transition={{ duration: 0.5 }}
+//                       className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-purple-400"
+//                     >
+//                       {roles[roleIndex]}
+//                     </motion.span>
+//                   </AnimatePresence>
+//                 </div>
+//               </motion.div>
+//             </div>
+
+//             <p className="text-lg text-muted-foreground">
+//             Innovative Web Developer & Data Analyst with a strong passion for building modern, user-friendly web applications and data-driven solutions. Proficient in React.js, Next.js, Tailwind CSS, Express.js, and MongoDB for full-stack development, along with expertise in Power BI, SQL, and Python for analytics and business intelligence. <br />
+//             With a keen eye for design and functionality, I specialize in crafting seamless digital experiences, implementing dynamic UI/UX components, and optimizing backend performance. My data analytics expertise allows me to extract valuable insights, create interactive dashboards, and develop data-driven strategies that enhance decision-making.
+//             </p>
+
+//             <div className="flex flex-wrap gap-4 pt-2">
+//               <Button size="lg" asChild>
+//                 <Link href="#projects">
+//                   View My Work <ArrowRight className="ml-2 h-4 w-4" />
+//                 </Link>
+//               </Button>
+//               <Button size="lg" variant="outline" asChild>
+//                 <Link href="/contact">Get In Touch</Link>
+//               </Button>
+//             </div>
+//           </motion.div>
+
+//           <motion.div
+//             initial={{ opacity: 0, scale: 0.9 }}
+//             animate={{ opacity: 1, scale: 1 }}
+//             transition={{ duration: 0.8, delay: 0.2 }}
+//             className="flex justify-center lg:justify-end"
+//           >
+//             {/* <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/30 shadow-xl">
+//               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent z-10 rounded-full" />
+//               <Image
+//                 src="/placeholder.svg?height=400&width=400"
+//                 alt="Mudassir Ahmed Siddiqui"
+//                 width={400}
+//                 height={400}
+//                 className="object-cover"
+//                 priority
+//               />
+//             </div> */}
+//           </motion.div>
+//         </div>
+//       </div>
+//     </section>
+//   )
+// }
