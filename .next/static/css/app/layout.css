@@ -918,6 +918,18 @@ video {
 .h-svh {
   height: 100svh;
 }
+.h-\[00px\] {
+  height: 00px;
+}
+.h-\[200px\] {
+  height: 200px;
+}
+.h-\[250px\] {
+  height: 250px;
+}
+.h-\[270px\] {
+  height: 270px;
+}
 .max-h-96 {
   max-height: 24rem;
 }
@@ -1563,6 +1575,10 @@ video {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 .pb-3 {
   padding-bottom: 0.75rem;

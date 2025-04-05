@@ -188,7 +188,7 @@ export default function Hero() {
         <div className="container mx-auto px-4 md:px-0">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Left side content */}
-            <div className="pl-0 md:pl-2 lg:pl-1 pt-8 md:pt-0">
+            <div className="pl-0 md:pl-2 lg:pl-1 md:pt-0">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}

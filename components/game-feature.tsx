@@ -11,6 +11,21 @@ const PADDLE_COLOR = "rgb(124, 58, 237)" // Same purple for paddles
 const LETTER_SPACING = 1
 const WORD_SPACING = 3
 
+// MANUAL SIZE CONTROLS - Modify these values to adjust the game container dimensions
+// ==================================================================================
+// For small mobile devices (width <= 400px)
+const SMALL_MOBILE_HEIGHT_RATIO = 0.6  // Height as a ratio of width (e.g., 0.6 = 60% of width)
+const SMALL_MOBILE_MAX_HEIGHT = 250    // Maximum height in pixels
+
+// For medium mobile devices (width <= 768px)
+const MOBILE_HEIGHT_RATIO = 0.7        // Height as a ratio of width
+const MOBILE_MAX_HEIGHT = 300          // Maximum height in pixels
+
+// For desktop devices (width > 768px)
+const DESKTOP_HEIGHT_RATIO = 0.6       // Height as a ratio of width
+const DESKTOP_MAX_HEIGHT = 500         // Maximum height in pixels
+// ==================================================================================
+
 const PIXEL_MAP = {
   P: [
     [1, 1, 1, 1],
@@ -164,6 +179,9 @@ export default function GameFeature() {
   const paddlesRef = useRef<Paddle[]>([])
   const scaleRef = useRef(1)
   const containerRef = useRef<HTMLDivElement>(null)
+  const gameHeightRef = useRef(0)
+  const isMobileRef = useRef(false)
+  const isSmallMobileRef = useRef(false)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -175,18 +193,77 @@ export default function GameFeature() {
     const resizeCanvas = () => {
       if (!containerRef.current) return
 
-      const { width, height } = containerRef.current.getBoundingClientRect()
+      const { width } = containerRef.current.getBoundingClientRect()
+      const isMobile = window.innerWidth <= 768
+      const isSmallMobile = window.innerWidth <= 400 // iPhone-size detection
+      
+      // Update device status
+      isMobileRef.current = isMobile
+      isSmallMobileRef.current = isSmallMobile
+
+      // Set canvas width
       canvas.width = width
-      canvas.height = height
-      scaleRef.current = Math.min(canvas.width / 1000, canvas.height / 1000)
+      
+      // MANUAL HEIGHT CONTROL - This section determines the game height
+      // Calculate height based on width and device type using the configurable ratios
+      let calculatedHeight
+      
+      if (isSmallMobile) {
+        // Very small devices: Use width ratio with maximum height constraint
+        calculatedHeight = Math.min(width * SMALL_MOBILE_HEIGHT_RATIO, SMALL_MOBILE_MAX_HEIGHT)
+      } else if (isMobile) {
+        // Mobile devices: Use width ratio with maximum height constraint
+        calculatedHeight = Math.min(width * MOBILE_HEIGHT_RATIO, MOBILE_MAX_HEIGHT)
+      } else {
+        // Desktop: Use width ratio with maximum height constraint
+        calculatedHeight = Math.min(width * DESKTOP_HEIGHT_RATIO, DESKTOP_MAX_HEIGHT)
+      }
+      
+      // Apply the calculated height
+      canvas.height = calculatedHeight
+      gameHeightRef.current = calculatedHeight
+
+      // Apply calculated height to container with no bottom padding
+      if (containerRef.current) {
+        containerRef.current.style.height = `${calculatedHeight}px`
+        containerRef.current.style.padding = "0"
+        containerRef.current.style.margin = "0 auto"
+      }
+
+      // Set adaptive scale based on device type
+      let baseScale = 1.0
+      if (isSmallMobile) {
+        baseScale = 0.55 // Much smaller for iPhone
+      } else if (isMobile) {
+        baseScale = 0.65 // Smaller for other mobile
+      }
+      
+      scaleRef.current = Math.min(canvas.width / 1000, canvas.height / 800) * baseScale
+
       initializeGame()
     }
 
     const initializeGame = () => {
       const scale = scaleRef.current
-      const LARGE_PIXEL_SIZE = 8 * scale
-      const SMALL_PIXEL_SIZE = 4 * scale
-      const BALL_SPEED = 6 * scale
+      const isMobile = isMobileRef.current
+      const isSmallMobile = isSmallMobileRef.current
+      
+      // Even more adaptive sizing based on device
+      let LARGE_PIXEL_SIZE, SMALL_PIXEL_SIZE, BALL_SPEED
+      
+      if (isSmallMobile) {
+        LARGE_PIXEL_SIZE = 5 * scale
+        SMALL_PIXEL_SIZE = 2.5 * scale
+        BALL_SPEED = 3.5 * scale
+      } else if (isMobile) {
+        LARGE_PIXEL_SIZE = 6 * scale
+        SMALL_PIXEL_SIZE = 3 * scale
+        BALL_SPEED = 4 * scale
+      } else {
+        LARGE_PIXEL_SIZE = 8 * scale
+        SMALL_PIXEL_SIZE = 4 * scale
+        BALL_SPEED = 6 * scale
+      }
 
       pixelsRef.current = []
       const words = ["PORTFOLIO", "WEBSITE"]
@@ -206,17 +283,44 @@ export default function GameFeature() {
         return width + calculateWordWidth(word, SMALL_PIXEL_SIZE) + (index > 0 ? WORD_SPACING * SMALL_PIXEL_SIZE : 0)
       }, 0)
       const totalWidth = Math.max(totalWidthLarge, totalWidthSmall)
-      const scaleFactor = (canvas.width * 0.8) / totalWidth
+      
+      // More conservative width percentage for smaller devices
+      let maxWidthPercentage
+      if (isSmallMobile) {
+        maxWidthPercentage = 0.65 // Even smaller for iPhones
+      } else if (isMobile) {
+        maxWidthPercentage = 0.7 // Small for general mobile
+      } else {
+        maxWidthPercentage = 0.8 // Standard for desktop
+      }
+      
+      const scaleFactor = (canvas.width * maxWidthPercentage) / totalWidth
 
       const adjustedLargePixelSize = LARGE_PIXEL_SIZE * scaleFactor
       const adjustedSmallPixelSize = SMALL_PIXEL_SIZE * scaleFactor
 
       const largeTextHeight = 5 * adjustedLargePixelSize
       const smallTextHeight = 5 * adjustedSmallPixelSize
-      const spaceBetweenLines = 5 * adjustedLargePixelSize
+      
+      // Reduce spacing between lines for smaller screens
+      let spaceBetweenLines
+      if (isSmallMobile) {
+        spaceBetweenLines = 2 * adjustedLargePixelSize
+      } else if (isMobile) {
+        spaceBetweenLines = 3 * adjustedLargePixelSize
+      } else {
+        spaceBetweenLines = 4 * adjustedLargePixelSize
+      }
+      
       const totalTextHeight = largeTextHeight + spaceBetweenLines + smallTextHeight
 
+      // Center vertically with consideration for smaller screens
       let startY = (canvas.height - totalTextHeight) / 2
+      
+      // For very small screens, move text up slightly to compensate for paddles
+      if (isSmallMobile) {
+        startY = Math.max((canvas.height - totalTextHeight) / 2 - adjustedLargePixelSize, adjustedLargePixelSize)
+      }
 
       words.forEach((word, wordIndex) => {
         const pixelSize = wordIndex === 0 ? adjustedLargePixelSize : adjustedSmallPixelSize
@@ -276,16 +380,37 @@ export default function GameFeature() {
       const ballStartX = canvas.width * 0.9
       const ballStartY = canvas.height * 0.1
 
+      // Even smaller ball on small mobile
+      let ballRadius
+      if (isSmallMobile) {
+        ballRadius = adjustedLargePixelSize / 3
+      } else if (isMobile) {
+        ballRadius = adjustedLargePixelSize / 2.5
+      } else {
+        ballRadius = adjustedLargePixelSize / 2
+      }
+
       ballRef.current = {
         x: ballStartX,
         y: ballStartY,
         dx: -BALL_SPEED,
         dy: BALL_SPEED,
-        radius: adjustedLargePixelSize / 2,
+        radius: ballRadius,
       }
 
-      const paddleWidth = adjustedLargePixelSize
-      const paddleLength = 10 * adjustedLargePixelSize
+      // More adaptive paddle dimensions
+      let paddleWidth, paddleLength
+      
+      if (isSmallMobile) {
+        paddleWidth = adjustedLargePixelSize * 0.7
+        paddleLength = 6 * adjustedLargePixelSize
+      } else if (isMobile) {
+        paddleWidth = adjustedLargePixelSize * 0.8
+        paddleLength = 8 * adjustedLargePixelSize
+      } else {
+        paddleWidth = adjustedLargePixelSize
+        paddleLength = 10 * adjustedLargePixelSize
+      }
 
       paddlesRef.current = [
         {
@@ -359,15 +484,25 @@ export default function GameFeature() {
         }
       })
 
+      // Adjust paddle movement speed based on device
+      let paddleSpeed
+      if (isSmallMobileRef.current) {
+        paddleSpeed = 0.2 // Faster for small mobile
+      } else if (isMobileRef.current) {
+        paddleSpeed = 0.15 // Fast for mobile
+      } else {
+        paddleSpeed = 0.1 // Normal for desktop
+      }
+
       paddles.forEach((paddle) => {
         if (paddle.isVertical) {
           paddle.targetY = ball.y - paddle.height / 2
           paddle.targetY = Math.max(0, Math.min(canvas.height - paddle.height, paddle.targetY))
-          paddle.y += (paddle.targetY - paddle.y) * 0.1
+          paddle.y += (paddle.targetY - paddle.y) * paddleSpeed
         } else {
           paddle.targetY = ball.x - paddle.width / 2
           paddle.targetY = Math.max(0, Math.min(canvas.width - paddle.width, paddle.targetY))
-          paddle.x += (paddle.targetY - paddle.x) * 0.1
+          paddle.x += (paddle.targetY - paddle.x) * paddleSpeed
         }
       })
 
@@ -429,8 +564,8 @@ export default function GameFeature() {
   }, [])
 
   return (
-    <div ref={containerRef} className="w-full h-full relative">
-      <canvas ref={canvasRef} className="w-full h-full" aria-label="Interactive Portfolio Game" />
+    <div ref={containerRef} className="w-full relative">
+      <canvas ref={canvasRef} className="w-full block" aria-label="Interactive Portfolio Game" />
     </div>
   )
 }

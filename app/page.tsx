@@ -20,12 +20,12 @@ export default function Home() {
             <h2 className="text-3xl font-bold mb-2">Interactive Experience</h2>
             <p className="text-muted-foreground">Play with this retro-inspired game</p>
           </div>
-          <div className="h-[500px] w-full rounded-xl overflow-hidden border border-primary/20 shadow-lg">
+          <div className="h-[270px] w-full rounded-xl overflow-hidden border border-primary/20 shadow-lg">
             <ClientGameFeature />
           </div>
         </section>
         
-        <section id="projects" className="py-16">
+        <section id="projects" className="py-10">
           <div className="container mx-auto px-4">
             <Suspense fallback={<div className="animate-pulse">Loading projects...</div>}>
               <Projects showAll={false} limit={3} />
