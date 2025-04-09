@@ -23,7 +23,7 @@ export default function Hero() {
     const handleResize = () => {
       const mobile = window.innerWidth < 768;
       setIsMobile(mobile);
-      
+
       if (mobile) {
         // Mobile device settings
         setViewport({
@@ -41,7 +41,7 @@ export default function Hero() {
 
     // Run once on mount
     handleResize();
-    
+
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -159,24 +159,40 @@ export default function Hero() {
 
       {/* Robot model - With responsive settings */}
       <div
-        className={`absolute inset-0 w-full h-full z-0 overflow-hidden ${
-          isMobile ? "opacity-30" : ""
-        }`}
+        className="absolute inset-0 w-full h-full z-0 overflow-hidden"
         style={{
           clipPath: "inset(0 0 0 0)", // Ensure content is clipped to this container
         }}
       >
-        <div
-          style={{
-            transform: `scale(${viewport.scale}) translateY(${viewport.translateY}%)`,
-            transformOrigin: "center center",
-            width: "100%",
-            height: "120%",
-            position: "relative",
-          }}
-        >
-          <SplineModel />
-        </div>
+        {/* Desktop model */}
+        {!isMobile && (
+          <div
+            style={{
+              transform: `scale(${viewport.scale}) translateY(${viewport.translateY}%)`,
+              transformOrigin: "center center",
+              width: "100%",
+              height: "120%",
+              position: "relative",
+            }}
+          >
+            <SplineModel modelUrl="https://prod.spline.design/YSJs-eVUVnXfq4i2/scene.splinecode" />
+          </div>
+        )}
+
+        {/* Mobile model */}
+        {isMobile && (
+          <div
+            style={{
+              transform: `scale(${viewport.scale}) translateY(${viewport.translateY}%)`,
+              transformOrigin: "center center",
+              width: "100%",
+              height: "120%",
+              position: "relative",
+            }}
+          >
+            <SplineModel modelUrl="https://prod.spline.design/kkyZ0Mgv0ZsQ89GE/scene.splinecode" />
+          </div>
+        )}
       </div>
 
       {/* Decorative gradient circles */}
@@ -275,9 +291,17 @@ export default function Hero() {
             >
               <p className="text-sm text-gray-300">
                 I'm a passionate Full Stack Developer and Data Analyst with
-                expertise in modern web technologies and data science.
+                expertise in modern web technologies and data science. Lorem
+                ipsum dolor sit, amet consectetur adipisicing elit. Dolores,
+                consequatur in reprehenderit maxime hic sequi repellendus
+                ratione vero nisi iusto sint odio ad.
               </p>
             </motion.div>
+
+            {/* Mobile Spline Model - positioned between bio and tagline */}
+            <div className="w-full h-48 mt-4 mb-6 relative">
+              <SplineModel modelUrl="https://prod.spline.design/kkyZ0Mgv0ZsQ89GE/scene.splinecode" />
+            </div>
           </div>
         )}
 

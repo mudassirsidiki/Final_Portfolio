@@ -6,6 +6,7 @@ import Contact from "@/components/contact"
 // import FloatingShapes from "@/components/floating-shapes"
 import ClientGameFeature from "@/components/ClientGameFeature"
 
+
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden">
@@ -15,12 +16,12 @@ export default function Home() {
           <Hero />
         </section>
         
-        <section id="game" className="py-16 relative">
+        <section id="game" className="py-8 relative">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold mb-2">Interactive Experience</h2>
             <p className="text-muted-foreground">Play with this retro-inspired game</p>
           </div>
-          <div className="h-[270px] w-full rounded-xl overflow-hidden border border-primary/20 shadow-lg">
+          <div className=" w-full rounded-xl overflow-hidden border border-primary/20 shadow-lg">
             <ClientGameFeature />
           </div>
         </section>
