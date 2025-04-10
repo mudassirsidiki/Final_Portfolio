@@ -267,51 +267,51 @@ export default function Hero() {
 
 
 
+        {/* Mobile Rotating & Glowing Ring for Image - Only visible on mobile */}
+        {isMobile && (
+          <div className="px-4 mt-8">
+            {/* Combined rotating and glowing effects for profile image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+              className="mx-auto w-72 h-72 relative mb-8 flex items-center justify-center"
+            >
+              {/* Glowing background effect */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 opacity-30 blur-2xl"></div>
 
+              {/* Outer rotating glowing ring */}
+              <div
+                className="absolute inset-0 rounded-full border-2 border-blue-500/60 opacity-40 animate-spin shadow-[0_0_60px_15px_rgba(59,130,246,0.4)]"
+                style={{ animationDuration: "15s" }}
+              ></div>
 
-{/* Mobile Rotating & Glowing Ring for Image - Only visible on mobile */}
-{isMobile && (
-  <div className="px-4 mt-8">
-    {/* Combined rotating and glowing effects for profile image */}
-    <motion.div
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay: 0.6, duration: 0.8 }}
-      className="mx-auto w-48 h-48 relative mb-8 flex items-center justify-center"
-    >
-      {/* Glowing background effect */}
-      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 opacity-30 blur-xl"></div>
-      
-      {/* Outer rotating glowing ring */}
-      <div className="absolute inset-0 rounded-full border-2 border-blue-500/60 opacity-80 animate-spin shadow-lg shadow-blue-500/20" 
-           style={{ animationDuration: "15s" }}></div>
-      
-      {/* Middle rotating glowing ring - opposite direction */}
-      <div className="absolute inset-3 rounded-full border-2 border-dashed border-purple-400/60 opacity-70 shadow-lg shadow-purple-500/20"
-           style={{ animation: "spin 12s linear infinite reverse" }}></div>
-      
-      {/* Inner rotating glowing ring */}
-      <div className="absolute inset-6 rounded-full border-2 border-dotted border-indigo-500/60 opacity-80 shadow-lg shadow-indigo-500/20"
-           style={{ animation: "spin 10s linear infinite" }}></div>
-      
-      {/* Inner circle for image with glowing border */}
-      <div className="relative w-40 h-40 rounded-full overflow-hidden shadow-lg">
-        {/* Glowing border effect */}
-        <div className="absolute inset-0 rounded-full border-2 border-blue-400/70 animate-pulse"></div>
-        {/* Image container */}
-        <div className="w-full h-full bg-black/40">
-          <img 
-            src="images/pik.jpg" 
-            alt="Profile" 
-            className="w-full h-full object-cover"
-          />
-        </div>
-      </div>
-    </motion.div>
-      
+              {/* Middle rotating glowing ring - opposite direction */}
+              <div
+                className="absolute inset-3 rounded-full border-2 border-dashed border-purple-400/60 opacity-70 shadow-[0_0_45px_12px_rgba(168,85,247,0.4)]"
+                style={{ animation: "spin 12s linear infinite reverse" }}
+              ></div>
 
+              {/* Inner rotating glowing ring */}
+              <div
+                className="absolute inset-6 rounded-full border-2 border-dotted border-indigo-500/60 opacity-80 shadow-[0_0_35px_10px_rgba(99,102,241,0.4)]"
+                style={{ animation: "spin 10s linear infinite" }}
+              ></div>
 
-
+              {/* Inner circle for image with glowing border */}
+              <div className="relative w-64 h-64 rounded-full overflow-hidden shadow-[0_0_35px_8px_rgba(59,130,246,0.6)]">
+                {/* Glowing border effect */}
+                <div className="absolute inset-0 rounded-full border-2 border-blue-400/70 animate-pulse"></div>
+                {/* Image container */}
+                <div className="w-full h-full bg-black/40">
+                  <img
+                    src="images/pik.jpg"
+                    alt="Profile"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </motion.div>
 
 
 
@@ -325,10 +325,7 @@ export default function Hero() {
             >
               <p className="text-sm text-gray-300">
                 I'm a passionate Full Stack Developer and Data Analyst with
-                expertise in modern web technologies and data science. Lorem
-                ipsum dolor sit, amet consectetur adipisicing elit. Dolores,
-                consequatur in reprehenderit maxime hic sequi repellendus
-                ratione vero nisi iusto sint odio ad. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias ratione perferendis suscipit sapiente recusandae amet, deleniti harum veniam eius exercitationem porro eveniet iusto voluptatibus! Adipisci iste facilis repellat cupiditate nulla!
+                expertise in modern web technologies and data science. Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus reprehenderit, ut voluptates sunt earum dolorem qui. Eum soluta tenetur expedita velit maiores consectetur eveniet veritatis, consequuntur obcaecati harum pariatur aliquid.
               </p>
             </motion.div>
           </div>
@@ -340,9 +337,10 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.8 }}
           className="absolute left-6 md:left-8 z-20"
-          style={{ 
+          style={{
             bottom: isMobile ? "20px" : "140px",
-            marginBottom: 0
+            marginBottom: 0,
+            marginTop: 2,
           }}
         >
           <p className="text-base md:text-lg font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-purple-400">
