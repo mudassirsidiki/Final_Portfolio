@@ -157,15 +157,14 @@ export default function Hero() {
       {/* Floating tech badges */}
       <div className="absolute inset-0 z-0">{/* <FloatingTechBadges /> */}</div>
 
-      {/* Robot model - With responsive settings */}
-      <div
-        className="absolute inset-0 w-full h-full z-0 overflow-hidden"
-        style={{
-          clipPath: "inset(0 0 0 0)", // Ensure content is clipped to this container
-        }}
-      >
-        {/* Desktop model */}
-        {!isMobile && (
+      {/* Robot model - ONLY for desktop now */}
+      {!isMobile && (
+        <div
+          className="absolute inset-0 w-full h-full z-0 overflow-hidden"
+          style={{
+            clipPath: "inset(0 0 0 0)", // Ensure content is clipped to this container
+          }}
+        >
           <div
             style={{
               transform: `scale(${viewport.scale}) translateY(${viewport.translateY}%)`,
@@ -177,23 +176,8 @@ export default function Hero() {
           >
             <SplineModel modelUrl="https://prod.spline.design/YSJs-eVUVnXfq4i2/scene.splinecode" />
           </div>
-        )}
-
-        {/* Mobile model */}
-        {isMobile && (
-          <div
-            style={{
-              transform: `scale(${viewport.scale}) translateY(${viewport.translateY}%)`,
-              transformOrigin: "center center",
-              width: "100%",
-              height: "120%",
-              position: "relative",
-            }}
-          >
-            <SplineModel modelUrl="https://prod.spline.design/kkyZ0Mgv0ZsQ89GE/scene.splinecode" />
-          </div>
-        )}
-      </div>
+        </div>
+      )}
 
       {/* Decorative gradient circles */}
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/20 rounded-full filter blur-3xl opacity-30 -mr-24 -mb-24"></div>
@@ -281,12 +265,62 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Mobile About Text - Only visible on mobile */}
-        {isMobile && (
-          <div className="px-4 mt-6">
+
+
+
+
+{/* Mobile Rotating & Glowing Ring for Image - Only visible on mobile */}
+{isMobile && (
+  <div className="px-4 mt-8">
+    {/* Combined rotating and glowing effects for profile image */}
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay: 0.6, duration: 0.8 }}
+      className="mx-auto w-48 h-48 relative mb-8 flex items-center justify-center"
+    >
+      {/* Glowing background effect */}
+      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 opacity-30 blur-xl"></div>
+      
+      {/* Outer rotating glowing ring */}
+      <div className="absolute inset-0 rounded-full border-2 border-blue-500/60 opacity-80 animate-spin shadow-lg shadow-blue-500/20" 
+           style={{ animationDuration: "15s" }}></div>
+      
+      {/* Middle rotating glowing ring - opposite direction */}
+      <div className="absolute inset-3 rounded-full border-2 border-dashed border-purple-400/60 opacity-70 shadow-lg shadow-purple-500/20"
+           style={{ animation: "spin 12s linear infinite reverse" }}></div>
+      
+      {/* Inner rotating glowing ring */}
+      <div className="absolute inset-6 rounded-full border-2 border-dotted border-indigo-500/60 opacity-80 shadow-lg shadow-indigo-500/20"
+           style={{ animation: "spin 10s linear infinite" }}></div>
+      
+      {/* Inner circle for image with glowing border */}
+      <div className="relative w-40 h-40 rounded-full overflow-hidden shadow-lg">
+        {/* Glowing border effect */}
+        <div className="absolute inset-0 rounded-full border-2 border-blue-400/70 animate-pulse"></div>
+        {/* Image container */}
+        <div className="w-full h-full bg-black/40">
+          <img 
+            src="images/pik.jpg" 
+            alt="Profile" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </motion.div>
+      
+
+
+
+
+
+
+
+            {/* Mobile About Text */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
               className="bg-black/50 backdrop-blur-sm rounded-lg p-4"
             >
               <p className="text-sm text-gray-300">
@@ -294,24 +328,22 @@ export default function Hero() {
                 expertise in modern web technologies and data science. Lorem
                 ipsum dolor sit, amet consectetur adipisicing elit. Dolores,
                 consequatur in reprehenderit maxime hic sequi repellendus
-                ratione vero nisi iusto sint odio ad.
+                ratione vero nisi iusto sint odio ad. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias ratione perferendis suscipit sapiente recusandae amet, deleniti harum veniam eius exercitationem porro eveniet iusto voluptatibus! Adipisci iste facilis repellat cupiditate nulla!
               </p>
             </motion.div>
-
-            {/* Mobile Spline Model - positioned between bio and tagline */}
-            <div className="w-full h-48 mt-4 mb-6 relative">
-              <SplineModel modelUrl="https://prod.spline.design/kkyZ0Mgv0ZsQ89GE/scene.splinecode" />
-            </div>
           </div>
         )}
 
-        {/* Bottom tagline - "Data Guru by day..." */}
+        {/* Bottom tagline - "Data Guru by day..." - Adjusted positioning for mobile */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.8 }}
-          className="absolute bottom-6 left-6 md:left-8 z-20"
-          style={{ marginBottom: isMobile ? "40px" : "140px" }}
+          className="absolute left-6 md:left-8 z-20"
+          style={{ 
+            bottom: isMobile ? "20px" : "140px",
+            marginBottom: 0
+          }}
         >
           <p className="text-base md:text-lg font-medium text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-purple-400">
             Data Guru by day,

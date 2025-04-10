@@ -2,7 +2,11 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-export default function SplineModel() {
+type Props = {
+  modelUrl: string;
+};
+
+export default function SplineModel({ modelUrl }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobileDevice, setIsMobileDevice] = useState(false);
 
@@ -10,11 +14,10 @@ export default function SplineModel() {
     const checkDeviceSize = () => {
       setIsMobileDevice(window.innerWidth < 768);
     };
-    
+
     checkDeviceSize();
     window.addEventListener('resize', checkDeviceSize);
-    
-    // Only proceed if we're rendering the model
+
     if (!isMobileDevice && containerRef.current) {
       const script = document.createElement('script');
       script.type = 'module';
@@ -24,7 +27,7 @@ export default function SplineModel() {
       script.onload = () => {
         if (containerRef.current) {
           const splineViewer = document.createElement('spline-viewer');
-          splineViewer.setAttribute('url', 'https://prod.spline.design/YSJs-eVUVnXfq4i2/scene.splinecode');
+          splineViewer.setAttribute('url', modelUrl); // ✅ Now dynamic
           splineViewer.style.width = '100%';
           splineViewer.style.height = '100%';
           containerRef.current.appendChild(splineViewer);
@@ -36,15 +39,16 @@ export default function SplineModel() {
       if (containerRef.current) {
         containerRef.current.innerHTML = '';
       }
-      const scriptElement = document.head.querySelector('script[src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"]');
+      const scriptElement = document.head.querySelector(
+        'script[src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"]'
+      );
       if (scriptElement) {
         document.head.removeChild(scriptElement);
       }
       window.removeEventListener('resize', checkDeviceSize);
     };
-  }, [isMobileDevice]);
+  }, [isMobileDevice, modelUrl]); // ✅ Added modelUrl to deps
 
-  // Don't render anything at all if on mobile
   if (isMobileDevice) {
     return null;
   }
