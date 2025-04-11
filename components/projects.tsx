@@ -25,250 +25,252 @@ interface Project {
 const allProjects: Project[] = [
   // DATA ANALYST PROJECTS (12 total - 9 Power BI, 3 SQL)
   
-  // Power BI Projects (9)
-  {
-    id: 1,
-    title: "Sales Performance Dashboard",
-    description: "Interactive dashboard analyzing sales performance across regions and product categories.",
-    images: ["/images/PBI-1.1.png", "/images/PBI-1.2.png"],
-    tags: ["Power BI", "DAX", "Data Modeling", "Visualizations"],
-    githubUrl: "https://github.com/yourusername/sales-dashboard",
-    category: "data-analyst",
-    subcategory: "power-bi"
-  },
-  {
-    id: 2,
-    title: "Financial Analysis Report",
-    description: "Comprehensive financial analysis with forecast models and budget comparisons.",
-    images: ["/images/PBI-2.1.png", "/images/PBI-2.2.png"],
-    tags: ["Power BI", "Financial Modeling", "What-if Analysis"],
-    githubUrl: "https://github.com/yourusername/financial-analysis",
-    category: "data-analyst",
-    subcategory: "power-bi"
-  },
-  {
-    id: 3,
-    title: "HR Analytics Dashboard",
-    description: "Employee performance metrics and workforce analytics visualization.",
-    images: ["/images/PBI-3.1.png", "/images/PBI-3.2.png"],
-    tags: ["Power BI", "HR Analytics", "DAX", "KPIs"],
-    githubUrl: "https://github.com/yourusername/hr-analytics",
-    category: "data-analyst",
-    subcategory: "power-bi"
-  },
-  {
-    id: 4,
-    title: "Supply Chain Monitoring",
-    description: "Real-time monitoring of supply chain metrics and inventory management.",
-    images: ["/images/PBI-4.1.png", "/images/PBI-4.2.png"],
-    tags: ["Power BI", "Supply Chain", "Inventory Analytics"],
-    githubUrl: "https://github.com/yourusername/supply-chain",
-    category: "data-analyst",
-    subcategory: "power-bi"
-  },
-  {
-    id: 5,
-    title: "Marketing Campaign Analysis",
-    description: "Performance tracking for marketing campaigns across multiple channels.",
-    images: ["/images/PBI-5.1.png", "/images/PBI-5.1.png"],
-    tags: ["Power BI", "Marketing Analytics", "ROI Analysis"],
-    githubUrl: "https://github.com/yourusername/marketing-analysis",
-    category: "data-analyst",
-    subcategory: "power-bi"
-  },
-  {
-    id: 6,
-    title: "Customer Segmentation",
-    description: "Customer behavior analysis and segmentation based on purchase history.",
-    images: ["/images/PBI-6.1.png"],
-    tags: ["Power BI", "Customer Analytics", "Segmentation", "RFM Analysis"],
-    githubUrl: "https://github.com/yourusername/customer-segments",
-    category: "data-analyst",
-    subcategory: "power-bi"
-  },
-  {
-    id: 7,
-    title: "Healthcare Metrics Dashboard",
-    description: "Key healthcare performance indicators and patient outcomes visualization.",
-    images: ["/images/PBI-7.1.png"],
-    tags: ["Power BI", "Healthcare Analytics", "Patient Metrics"],
-    githubUrl: "https://github.com/yourusername/healthcare-metrics",
-    category: "data-analyst",
-    subcategory: "power-bi"
-  },
-  {
-    id: 8,
-    title: "Retail Store Performance",
-    description: "Store-by-store performance comparison with product category breakdowns.",
-    images: ["/images/PBI-8.1.png"],
-    tags: ["Power BI", "Retail Analytics", "Store Comparison"],
-    githubUrl: "https://github.com/yourusername/retail-performance",
-    category: "data-analyst",
-    subcategory: "power-bi"
-  },
-  {
-    id: 9,
-    title: "Financial Budget Tracker",
-    description: "Budget vs. actual spending tracker with variance analysis and forecasting.",
-    images: ["/images/PBI-9.1.jpg"],
-    tags: ["Power BI", "Budget Analysis", "Financial Planning"],
-    githubUrl: "https://github.com/yourusername/budget-tracker",
-    category: "data-analyst",
-    subcategory: "power-bi"
-  },
+    // Power BI Projects (9)
+    {
+      id: 1,
+      title: "Sales Performance Dashboard",
+      description: "Interactive dashboard analyzing sales performance across regions and product categories.",
+      images: ["/images/PBI-1.1.png", "/images/PBI-1.2.png"],
+      tags: ["Power BI", "DAX", "Data Modeling", "Visualizations"],
+      githubUrl: "https://github.com/mudassirsidiki/PowerBI-Projects",
+      category: "data-analyst",
+      subcategory: "power-bi"
+    },
+    {
+      id: 2,
+      title: "Financial Analysis Report",
+      description: "Comprehensive financial analysis with forecast models and budget comparisons.",
+      images: ["/images/PBI-2.1.png", "/images/PBI-2.2.png"],
+      tags: ["Power BI", "Financial Modeling", "What-if Analysis"],
+      githubUrl: "https://github.com/mudassirsidiki/PowerBI-Projects-2-",
+      category: "data-analyst",
+      subcategory: "power-bi"
+    },
+    {
+      id: 3,
+      title: "HR Analytics Dashboard",
+      description: "Employee performance metrics and workforce analytics visualization.",
+      images: ["/images/PBI-3.1.png", "/images/PBI-3.2.png"],
+      tags: ["Power BI", "HR Analytics", "DAX", "KPIs"],
+      githubUrl: "https://github.com/mudassirsidiki/PowerBI-Projects-3-",
+      category: "data-analyst",
+      subcategory: "power-bi"
+    },
+    {
+      id: 4,
+      title: "Supply Chain Monitoring",
+      description: "Real-time monitoring of supply chain metrics and inventory management.",
+      images: ["/images/PBI-4.1.png", "/images/PBI-4.2.png"],
+      tags: ["Power BI", "Supply Chain", "Inventory Analytics"],
+      githubUrl: "https://github.com/mudassirsidiki/PowerBI-Projects-4-",
+      category: "data-analyst",
+      subcategory: "power-bi"
+    },
+    {
+      id: 5,
+      title: "Marketing Campaign Analysis",
+      description: "Performance tracking for marketing campaigns across multiple channels.",
+      images: ["/images/PBI-5.1.png", "/images/PBI-5.1.png"],
+      tags: ["Power BI", "Marketing Analytics", "ROI Analysis"],
+      githubUrl: "https://github.com/mudassirsidiki/PowerBI-Projects-5-",
+      category: "data-analyst",
+      subcategory: "power-bi"
+    },
+    {
+      id: 6,
+      title: "Customer Segmentation",
+      description: "Customer behavior analysis and segmentation based on purchase history.",
+      images: ["/images/PBI-6.1.png"],
+      tags: ["Power BI", "Customer Analytics", "Segmentation", "RFM Analysis"],
+      githubUrl: "https://github.com/mudassirsidiki/PowerBI-Projects-6-",
+      category: "data-analyst",
+      subcategory: "power-bi"
+    },
+    {
+      id: 7,
+      title: "Healthcare Metrics Dashboard",
+      description: "Key healthcare performance indicators and patient outcomes visualization.",
+      images: ["/images/PBI-7.1.png"],
+      tags: ["Power BI", "Healthcare Analytics", "Patient Metrics"],
+      githubUrl: "https://github.com/mudassirsidiki/PowerBI-Projects-7-",
+      category: "data-analyst",
+      subcategory: "power-bi"
+    },
+    {
+      id: 8,
+      title: "Retail Store Performance",
+      description: "Store-by-store performance comparison with product category breakdowns.",
+      images: ["/images/PBI-8.1.png"],
+      tags: ["Power BI", "Retail Analytics", "Store Comparison"],
+      githubUrl: "https://github.com/mudassirsidiki/PowerBI-Projects-8-",
+      category: "data-analyst",
+      subcategory: "power-bi"
+    },
+    {
+      id: 9,
+      title: "Financial Budget Tracker",
+      description: "Budget vs. actual spending tracker with variance analysis and forecasting.",
+      images: ["/images/PBI-9.1.jpg"],
+      tags: ["Power BI", "Budget Analysis", "Financial Planning"],
+      githubUrl: "https://github.com/mudassirsidiki/budget-tracker",
+      category: "data-analyst",
+      subcategory: "power-bi"
+    },
+    
+    // SQL Projects (3)
+    {
+      id: 10,
+      title: "Sales Data Analysis",
+      description: "SQL-based analysis of sales patterns and customer purchase behavior.",
+      images: ["/images/SQL-1.1.png", "/images/SQL-1.2.png"],
+      tags: ["SQL", "Data Analysis", "Sales Analytics"],
+      githubUrl: "https://github.com/mudassirsidiki/SQL_RETAIL_SALES_P1",
+      category: "data-analyst",
+      subcategory: "sql"
+    },
+    {
+      id: 11,
+      title: "Customer Churn Analysis",
+      description: "SQL queries to identify patterns in customer churn and retention.",
+      images: ["/images/SQL-2.1.png", "/images/SQL-2.2.png"],
+      tags: ["SQL", "Churn Analysis", "Customer Analytics"],
+      githubUrl: "https://github.com/mudassirsidiki/NETFLIX_SQL_ANALYSIS_P2",
+      category: "data-analyst",
+      subcategory: "sql"
+    },
+    {
+      id: 12,
+      title: "Inventory Management System",
+      description: "SQL database design and queries for inventory management and tracking.",
+      images: ["/images/SQL-3.1.png", "/images/SQL-3.2.png"],
+      tags: ["SQL", "Database Design", "Inventory Control"],
+      githubUrl: "https://github.com/mudassirsidiki/Walmart_Sales_Data_SQL_P3",
+      category: "data-analyst",
+      subcategory: "sql"
+    },
+    
+    // WEB DEVELOPMENT PROJECTS (12 total - 3 HTML/CSS/JS, 3 Tailwind, 3 React, 3 Next.js)
+    
+    // HTML/CSS/JavaScript Projects (3)
+    {
+      id: 13,
+      title: "Portfolio Website Purple",
+      description: "Modern, responsive developer portfolio with animated sections and project showcases.",
+      images: ["/images/next_p1_1.png", "/images/next_p1_2.png"],
+      tags: ["Next.js", "Tailwind CSS", "JavaScript", "Responsive Design"],
+      githubUrl: "https://github.com/mudassirsidiki/Portfolio_1",
+      category: "web-development",
+      subcategory: "nextjs"
+    },
+    {
+      id: 14,
+      title: "Portfolio Website Red",
+      description: "Clean and professional portfolio template for developers with project filters and contact form.",
+      images: ["/images/next_p2_1.png", "/images/next_p2_2.png"],
+      tags: ["Next.js", "Tailwind CSS", "JavaScript", "Responsive Design"],
+      githubUrl: "https://github.com/mudassirsidiki/Portfolio2",
+      category: "web-development",
+      subcategory: "nextjs"
+    },
+    
+    // Tailwind CSS Projects (3)
+    {
+      id: 16,
+      title: "Microsoft Website",
+      description: "Responsive Microsoft website clone using Tailwind CSS, featuring product showcases and navigation menus.",
+      images: ["/images/TWCSS-1.1.png", "/images/TWCSS-1.2.png"],
+      tags: ["Vite", "Tailwind CSS", "Responsive Design", "Animation"],
+      githubUrl: "https://github.com/mudassirsidiki/TailwindCSS_MicrosoftClone",
+      category: "web-development",
+      subcategory: "tailwind"
+    },
+    {
+      id: 17,
+      title: "Foody Zone Website",
+      description: "Food ordering website with menu filtering, product cards, and responsive design.",
+      images: ["/images/TWCSS-2.1.png", "/images/TWCSS-2.2.png" ],
+      tags: ["Vite", "Tailwind CSS", "UI Design", "React"],
+      githubUrl: "https://github.com/mudassirsidiki/React_Project_2_FoodyZone",
+      category: "web-development",
+      subcategory: "react"
+    },
+    {
+      id: 18,
+      title: "Contact Page",
+      description: "Modern contact form with input validation and responsive design using Tailwind CSS.",
+      images: ["/images/TWCSS-3.1.png", "/images/TWCSS-3.2.png" ],
+      tags: ["Tailwind CSS", "Vite", "React", "Form Handling"],
+      githubUrl: "https://github.com/mudassirsidiki/React_Project_3_ContactForm",
+      category: "web-development",
+      subcategory: "react"
+    },
+    
+    // React Projects (3)
+    {
+      id: 19,
+      title: "Netflix Landing Page",  
+      description: "Responsive Netflix landing page clone with featured content carousel and category sections.",
+      images: ["/images/REACT-5.1.png", "/images/REACT-5.2.png" ],
+      tags: ["React", "Tailwind CSS", "Frontend"],
+      githubUrl: "https://github.com/mudassirsidiki/NetflixClonell",
+      category: "web-development",
+      subcategory: "react"
+    },
+    {
+      id: 20,
+      title: "Binance NFT Website",
+      description: "NFT marketplace interface with collection showcase and responsive grid layout.",
+      images: ["/images/REACT-4.1.png", "/images/REACT-4.2.png" ],
+      tags: ["React", "Tailwind CSS", "Frontend"],
+      githubUrl: "https://github.com/mudassirsidiki/React_Project_3_CR7Binance",
+      category: "web-development",
+      subcategory: "react"
+    },
+    {
+      id: 21,
+      title: "Nike Landing Page",
+      description: "Interactive Nike product showcase with animated elements and responsive design.",
+      images: ["/images/REACT-1.1.png", "/images/REACT-1.2.png" ],
+      tags: ["Vite", "React", "Tailwind CSS", "Frontend"],
+      githubUrl: "https://github.com/mudassirsidiki/React_Project_1_Nike",
+      category: "web-development",
+      subcategory: "react"
+    },
+    
+    // HTML/CSS/JS Projects (correctly categorized from Next.js)
+    {
+      id: 22,
+      title: "Netflix Landing Page",
+      description: "Static Netflix landing page clone with responsive design using vanilla HTML, CSS, and JavaScript.",
+      images: ["/images/plain_1.1.png", "/images/plain_1.2.png"],
+      tags: ["HTML", "CSS", "JavaScript", "Frontend", "Responsive"],
+      githubUrl: "https://github.com/mudassirsidiki/NetflixClone",
+      category: "web-development",
+      subcategory: "html-css-js"
+    },
+    {
+      id: 23,
+      title: "Spotify Landing Page",
+      description: "Spotify interface clone featuring playlist displays and music controls using HTML, CSS, and JavaScript.",
+      images: ["/images/plain_2.1.png", "/images/plain_2.2.png"],
+      tags: ["HTML", "CSS", "JavaScript", "Frontend", "Responsive"],
+      githubUrl: "https://github.com/mudassirsidiki/SpotifyClone",
+      category: "web-development",
+      subcategory: "html-css-js"
+    },
+    {
+      id: 24,
+      title: "Twitter Landing Page",
+      description: "Twitter interface clone with tweet timeline and responsive mobile design using vanilla web technologies.",
+      images: ["/images/plain_3.1.png", "/images/plain_3.2.png"],
+      tags: ["HTML", "CSS", "JavaScript", "Frontend", "Responsive"],
+      githubUrl: "https://github.com/mudassirsidiki/TwitterClone",
+      category: "web-development",
+      subcategory: "html-css-js"
+    }
+  ]
   
-  // SQL Projects (3)
-  {
-    id: 10,
-    title: "Sales Data Analysis",
-    description: "SQL-based analysis of sales patterns and customer purchase behavior.",
-    images: ["/images/SQL-1.1.png", "/images/SQL-1.2.png"],
-    tags: ["SQL", "Data Analysis", "Sales Analytics"],
-    githubUrl: "https://github.com/yourusername/sql-sales-analysis",
-    category: "data-analyst",
-    subcategory: "sql"
-  },
-  {
-    id: 11,
-    title: "Customer Churn Analysis",
-    description: "SQL queries to identify patterns in customer churn and retention.",
-    images: ["/images/SQL-2.1.png", "/images/SQL-2.2.png"],
-    tags: ["SQL", "Churn Analysis", "Customer Analytics"],
-    githubUrl: "https://github.com/yourusername/sql-churn-analysis",
-    category: "data-analyst",
-    subcategory: "sql"
-  },
-  {
-    id: 12,
-    title: "Inventory Management System",
-    description: "SQL database design and queries for inventory management and tracking.",
-    images: ["/images/SQL-3.1.png", "/images/SQL-3.2.png"],
-    tags: ["SQL", "Database Design", "Inventory Control"],
-    githubUrl: "https://github.com/yourusername/sql-inventory-system",
-    category: "data-analyst",
-    subcategory: "sql"
-  },
   
-  // WEB DEVELOPMENT PROJECTS (12 total - 3 HTML/CSS/JS, 3 Tailwind, 3 React, 3 Next.js)
-  
-  // HTML/CSS/JavaScript Projects (3)
-  {
-    id: 13,
-    title: "Portfolio Website Purple",
-    description: "Responsive website for a restaurant with menu and reservation features.",
-    images: ["/images/next_p1_1.png", "/images/next_p1_2.png"],
-    tags: ["NEXT.JS", "TAILWIND CSS", "JavaScript", "Responsive Design"],
-    githubUrl: "https://github.com/yourusername/restaurant-website",
-    category: "web-development",
-    subcategory: "nextjs"
-  },
-  {
-    id: 14,
-    title: "Portfolio Website Red",
-    description: "Clean and professional portfolio template for developers.",
-    images: ["/images/next_p2_1.png", "/images/next_p2_2.png"],
-    tags: ["NEXT.JS", "TAILWIND CSS", "JavaScript", "Responsive Design"],
-    githubUrl: "https://github.com/yourusername/portfolio-template",
-    category: "web-development",
-    subcategory: "nextjs"
-  },
-  
-  // Tailwind CSS Projects (3)
-  {
-    id: 16,
-    title: "Microsoft Website",
-    description: "Modern landing page for a SaaS product using Tailwind CSS.",
-    images: ["/images/TWCSS-1.1.png", "/images/TWCSS-1.2.png"],
-    tags: ["VITE", "Tailwind CSS", "Responsive Design", "Animation"],
-    githubUrl: "https://github.com/yourusername/saas-landing",
-    category: "web-development",
-    subcategory: "tailwind"
-  },
-  {
-    id: 17,
-    title: "Foody Zone Website",
-    description: "Clean and modern admin dashboard interface built with Tailwind CSS.",
-    images: ["/images/TWCSS-2.1.png", "/images/TWCSS-2.2.png" ],
-    tags: ["VITE", "Tailwind CSS", "UI Design", "Dashboard"],
-    githubUrl: "https://github.com/yourusername/admin-dashboard",
-    category: "web-development",
-    subcategory: "tailwind"
-  },
-  {
-    id: 18,
-    title: "Contact Page",
-    description: "Complete e-commerce UI components built with Tailwind CSS.",
-    images: ["/images/TWCSS-3.1.png", "/images/TWCSS-3.2.png" ],
-    tags: ["Tailwind CSS", "VITE", "UI Components"],
-    githubUrl: "https://github.com/yourusername/ecommerce-ui-kit",
-    category: "web-development",
-    subcategory: "tailwind"
-  },
-  
-  // React Projects (3)
-  {
-    id: 19,
-    title: "Netflix Landing Page",  
-    description: "Feature-rich task management application built with React.",
-    images: ["/images/REACT-5.1.png", "/images/REACT-5.2.png" ],
-    tags: ["React JS", "Tailwind CSS", "frontend"],
-    githubUrl: "https://github.com/yourusername/task-management-app",
-    category: "web-development",
-    subcategory: "react"
-  },
-  {
-    id: 20,
-    title: "Binance NFT Website",
-    description: "Social media analytics dashboard built with React and Chart.js.",
-    images: ["/images/REACT-4.1.png", "/images/REACT-4.2.png" ],
-    tags: ["React JS", "Tailwind CSS", "frontend"],
-    githubUrl: "https://github.com/yourusername/social-dashboard",
-    category: "web-development",
-    subcategory: "react"
-  },
-  {
-    id: 21,
-    title: "Nike Landing Page",
-    description: "Full-featured e-commerce store with shopping cart and checkout.",
-    images: ["/images/REACT-1.1.png", "/images/REACT-1.2.png" ],
-    tags: ["VITE", "React", "Tailwind CSS", "frontend"],
-    githubUrl: "https://github.com/yourusername/react-ecommerce",
-    category: "web-development",
-    subcategory: "react"
-  },
-  
-  // Next.js Projects (3)
-  {
-    id: 22,
-    title: "Netflix Landing Page",
-    description: "Modern real estate listing platform with property search and filtering.",
-    images: ["/images/plain_1.1.png", "/images/plain_1.2.png"],
-    tags: ["HTML", "CSS", "Javascript", "frontend", "responsive"],
-    githubUrl: "https://github.com/yourusername/real-estate-platform",
-    category: "web-development",
-    subcategory: "html-css-js"
-  },
-  {
-    id: 23,
-    title: "Spotify Landing Page",
-    description: "SEO-optimized blog platform with markdown support and content management.",
-    images: ["/images/plain_2.1.png", "/images/plain_2.2.png"],
-    tags: ["HTML", "CSS", "Javascript", "frontend", "responsive"],
-    githubUrl: "https://github.com/yourusername/blog-platform",
-    category: "web-development",
-    subcategory: "html-css-js"
-  },
-  {
-    id: 24,
-    title: "Twitter Landing Page",
-    description: "Full-stack job posting and application platform with user authentication.",
-    images: ["/images/plain_3.1.png", "/images/plain_3.2.png"],
-    tags: ["HTML", "CSS", "Javascript", "frontend", "responsive"],
-    githubUrl: "https://github.com/yourusername/job-board",
-    category: "web-development",
-    subcategory: "html-css-js"
-  }
-];
 
 // Define category information with proper display names
 type CategoryKey = "data-analyst" | "web-development";

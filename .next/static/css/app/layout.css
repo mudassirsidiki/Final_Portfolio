@@ -758,6 +758,9 @@ video {
 .mb-2 {
   margin-bottom: 0.5rem;
 }
+.mb-24 {
+  margin-bottom: 6rem;
+}
 .mb-3 {
   margin-bottom: 0.75rem;
 }
@@ -920,6 +923,18 @@ video {
 }
 .h-svh {
   height: 100svh;
+}
+.h-screen {
+  height: 100vh;
+}
+.h-\[\] {
+  height: ;
+}
+.h-\[60rem\] {
+  height: 60rem;
+}
+.h-\[59rem\] {
+  height: 59rem;
 }
 .max-h-96 {
   max-height: 24rem;
@@ -3140,11 +3155,6 @@ video {
     line-height: 2.5rem;
   }
 
-  .md\:text-5xl {
-    font-size: 3rem;
-    line-height: 1;
-  }
-
   .md\:text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
@@ -3153,6 +3163,11 @@ video {
   .md\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+
+  .md\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 
   .md\:opacity-0 {

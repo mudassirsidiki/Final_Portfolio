@@ -146,7 +146,7 @@ export default function Hero() {
   // Replace the entire section component with this updated version
   return (
     <section
-      className="relative min-h-screen w-screen overflow-hidden bg-black"
+      className="relative h-[59rem] w-screen overflow-hidden bg-black"
       ref={containerRef}
     >
       {/* Animated background particles */}
@@ -203,18 +203,18 @@ export default function Hero() {
                     transition={{ delay: 0.5, duration: 0.8 }}
                     className="space-y-1"
                   >
-                    <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold tracking-tight text-white text-left">
+                    <h1 className="text-4xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white text-left mb-2">
                       <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-gradient-x">
                         Hello, world.
                       </span>
                     </h1>
 
-                    <div className="h-12 md:h-14 lg:h-14 flex items-start justify-start text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white">
+                    <div className="h-12 md:h-14 lg:h-14 flex items-start justify-start text-2xl md:text-2xl lg:text-5xl font-bold tracking-tight text-white">
                       <span>{nameText}</span>
                       <span className="animate-blink ml-1 h-10 md:h-12 w-[3px] bg-blue-400 inline-block"></span>
                     </div>
 
-                    <div className="h-8 md:h-10 lg:h-10 flex items-start justify-start text-xl md:text-2xl lg:text-4xl font-medium tracking-tight text-white">
+                    <div className="h-8 md:h-10 lg:h-10 flex items-start justify-start text-xl md:text-3xl lg:text-4xl font-medium tracking-tight text-white">
                       <AnimatePresence mode="wait">
                         <motion.span
                           key={`role-${roleIndex}`}
@@ -265,8 +265,6 @@ export default function Hero() {
           </div>
         </div>
 
-
-
         {/* Mobile Rotating & Glowing Ring for Image - Only visible on mobile */}
         {isMobile && (
           <div className="px-4 mt-8">
@@ -313,19 +311,20 @@ export default function Hero() {
               </div>
             </motion.div>
 
-
-
-
             {/* Mobile About Text */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
-              className="bg-black/50 backdrop-blur-sm rounded-lg p-4"
+              className="bg-black/50 backdrop-blur-sm rounded-lg p-4 mb-24"
             >
               <p className="text-sm text-gray-300">
                 I'm a passionate Full Stack Developer and Data Analyst with
-                expertise in modern web technologies and data science. Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus reprehenderit, ut voluptates sunt earum dolorem qui. Eum soluta tenetur expedita velit maiores consectetur eveniet veritatis, consequuntur obcaecati harum pariatur aliquid.
+                expertise in modern web technologies and data science. Lorem
+                ipsum dolor sit amet consectetur adipisicing elit. Delectus
+                reprehenderit, ut voluptates sunt earum dolorem qui. Eum soluta
+                tenetur expedita velit maiores consectetur eveniet veritatis,
+                consequuntur obcaecati harum pariatur aliquid.
               </p>
             </motion.div>
           </div>
