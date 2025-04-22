@@ -254,10 +254,9 @@ export default function Hero() {
                 style={{ marginRight: "-10px" }}
               >
                 <p className="text-gray-300 mb-3">
-                  I'm a passionate Full Stack Developer and Data Analyst with
-                  expertise in modern web technologies and data science. With a
-                  strong foundation in both frontend and backend development, I
-                  create seamless, user-focused digital experiences.
+                I'm a passionate Full Stack Developer and Data Analyst with a strong command over modern web technologies and data science tools. I specialize in building dynamic, responsive, and user-centric digital solutions that not only look great but also perform efficiently. <br />
+
+With hands-on experience in both frontend and backend development, I bring a holistic approach to web applications — from designing sleek user interfaces to managing robust server-side operations. On the data side, I excel in cleaning, transforming, and visualizing data, enabling organizations to make smarter, data-driven decisions.
                 </p>
                 <p className="text-gray-300"></p>
               </motion.div>
@@ -319,12 +318,7 @@ export default function Hero() {
               className="bg-black/50 backdrop-blur-sm rounded-lg p-4 mb-24"
             >
               <p className="text-sm text-gray-300">
-                I'm a passionate Full Stack Developer and Data Analyst with
-                expertise in modern web technologies and data science. Lorem
-                ipsum dolor sit amet consectetur adipisicing elit. Delectus
-                reprehenderit, ut voluptates sunt earum dolorem qui. Eum soluta
-                tenetur expedita velit maiores consectetur eveniet veritatis,
-                consequuntur obcaecati harum pariatur aliquid.
+              I'm a passionate Full Stack Developer and Data Analyst with a strong command over modern web technologies and data science tools. I specialize in building dynamic, responsive, and user-centric digital solutions that not only look great but also perform efficiently.
               </p>
             </motion.div>
           </div>

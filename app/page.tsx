@@ -19,7 +19,7 @@ export default function Home() {
         <section id="game" className="py-8 relative">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold mb-2">Interactive Experience</h2>
-            <p className="text-muted-foreground">Play with this retro-inspired game</p>
+            {/* <p className="text-muted-foreground">Play with this retro-inspired game</p> */}
           </div>
           <div className=" w-full rounded-xl overflow-hidden border border-primary/20 shadow-lg">
             <ClientGameFeature />
